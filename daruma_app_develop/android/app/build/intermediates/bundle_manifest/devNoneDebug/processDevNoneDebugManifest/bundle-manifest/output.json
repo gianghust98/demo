@@ -1,0 +1,1 @@
+[{"outputType":{"type":"BUNDLE_MANIFEST"},"apkData":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"1.0.0","enabled":true,"outputFile":"app-dev-none-debug.apk","fullName":"devNoneDebug","baseName":"dev-none-debug"},"path":"AndroidManifest.xml","properties":{"packageId":"com.sukoyakadaruma.liferecord.develop","split":"","minSdkVersion":"19"}}]

@@ -1,0 +1,104 @@
+{
+  "project_info": {
+    "project_number": "366563029557",
+    "firebase_url": "https://sukoyakadaruma.firebaseio.com",
+    "project_id": "sukoyakadaruma",
+    "storage_bucket": "sukoyakadaruma.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366563029557:android:5c3bcdb5e5cba8f5",
+        "android_client_info": {
+          "package_name": "com.sukoyakadaruma.liferecord"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366563029557-vd3oki54i1a4men1qev184osm2alu6fu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAABS3bHDvuZ0n9tn3NJo1-_T6S272TdSQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366563029557:android:c3a0b83b82ab168a",
+        "android_client_info": {
+          "package_name": "com.sukoyakadaruma.liferecord.develop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366563029557-vd3oki54i1a4men1qev184osm2alu6fu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAABS3bHDvuZ0n9tn3NJo1-_T6S272TdSQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366563029557:android:3ed8286430ea68f0",
+        "android_client_info": {
+          "package_name": "com.sukoyakadaruma.liferecord.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366563029557-vd3oki54i1a4men1qev184osm2alu6fu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAABS3bHDvuZ0n9tn3NJo1-_T6S272TdSQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Automatically generated file. DO NOT MODIFY -->
+
+    <!-- Values from build type: debug -->
+    <integer name="react_native_dev_server_port">8081</integer>
+    <integer name="react_native_inspector_proxy_port">8081</integer>
+    <!-- Values from default config. -->
+    <string name="API_URL" translatable="false">"https://staging.app-api.sukoyakadaruma.com"</string>
+    <string name="ENV" translatable="false">"stg"</string>
+    <string name="FITBIT_CLIENT_ID" translatable="false">"22D4ZD"</string>
+    <string name="FITBIT_CLIENT_SECRET" translatable="false">"675e0fb5ce5a6e8c390d10e0cc5836e6"</string>
+    <string name="FITBIT_REDIRECT_URL" translatable="false">"com.sukoyakadaruma.liferecord.staging://fitbit"</string>
+    <string name="OMRON_AUTH_URL" translatable="false">"https://data-stg-jp.omronconnect.mobi/api/apps/bdf72f34/oauth2/authorize"</string>
+    <string name="OMRON_CLIENT_ID" translatable="false">"a9f0mbrp9kos1qen4j927eh326tnrnnmrnbi"</string>
+    <string name="OMRON_CLIENT_SECRET" translatable="false">"fbu2jekp60vt39l84amltnln16eb5qk90lurj9kgt596qtta3keank62ljoi8bdd"</string>
+    <string name="OMRON_REDIRECT_URL" translatable="false">"com.sukoyakadaruma.liferecord.staging://omron"</string>
+    <string name="OMRON_TOKEN_STATE" translatable="false">"sjp"</string>
+    <string name="OMRON_TOKEN_URL" translatable="false">"https://data-stg-jp.omronconnect.mobi/api/apps/bdf72f34/oauth2/token"</string>
+    <string name="VER_CODE" translatable="false">"1"</string>
+    <string name="VER_NAME" translatable="false">"1.0.0"</string>
+    <string name="build_config_package" translatable="false">com.daruma_app</string>
+
+</resources>

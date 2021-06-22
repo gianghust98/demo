@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">366563029557-vd3oki54i1a4men1qev184osm2alu6fu.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://sukoyakadaruma.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">366563029557</string>
+    <string name="google_api_key" translatable="false">AIzaSyAABS3bHDvuZ0n9tn3NJo1-_T6S272TdSQ</string>
+    <string name="google_app_id" translatable="false">1:366563029557:android:c3a0b83b82ab168a</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAABS3bHDvuZ0n9tn3NJo1-_T6S272TdSQ</string>
+    <string name="google_storage_bucket" translatable="false">sukoyakadaruma.appspot.com</string>
+    <string name="project_id" translatable="false">sukoyakadaruma</string>
+</resources>

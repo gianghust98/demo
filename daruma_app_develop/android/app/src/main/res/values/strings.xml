@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">dev)すこやかダルマ</string>
+    <string name="line_channel_id" translatable="false">1621375092</string>
+    <string name="default_notification_channel_id" translatable="false">default</string>
+</resources>
