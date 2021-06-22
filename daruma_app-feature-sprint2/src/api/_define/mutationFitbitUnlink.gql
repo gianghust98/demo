@@ -1,0 +1,10 @@
+ 
+mutation mutationFitbitUnlink{
+  fitbitUnlink{
+    id
+    fitbitLink{
+      linked
+      lastSync
+    }
+  }
+}

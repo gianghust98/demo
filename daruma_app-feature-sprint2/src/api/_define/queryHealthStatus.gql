@@ -1,0 +1,16 @@
+ 
+query queryProfile{
+  currentUser{
+    id
+    healthStatus{
+      id
+      smokingStatus
+      diabetesStatus
+      cerebrovascularDiseasStatus
+      heartLesionStatus
+      kidneySiseaseStatus
+      vascularLesionStatus
+      diseaseDeathRelativesStatus
+    }
+  }
+}

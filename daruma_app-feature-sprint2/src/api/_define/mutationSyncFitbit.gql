@@ -1,0 +1,6 @@
+ 
+mutation mutationSyncFitbit($syncData: Date!){
+  syncFitbit(syncData: $syncData){
+    id
+  }
+}

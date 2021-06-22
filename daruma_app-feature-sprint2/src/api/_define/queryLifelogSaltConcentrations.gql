@@ -1,0 +1,9 @@
+ 
+query queryLifelogSaltConcentrations($year: Int!,$month: Int!){
+  lifelogSaltConcentrations(year:$year, month:$month){
+    id
+    saltConcentration
+    recordDevice
+    inspectedAt
+  }
+}

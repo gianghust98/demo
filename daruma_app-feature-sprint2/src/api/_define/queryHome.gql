@@ -1,0 +1,18 @@
+ 
+query queryHome{
+  currentUser{
+    id
+    setting{
+      id
+      sharelingCode
+      gender
+      postalCode
+      birthYear
+      showBodyWeight
+      showSaltConcentration
+      showStepDownMedicineState
+    }
+  }
+  unreadInformationCount
+  now
+}

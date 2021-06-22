@@ -1,0 +1,9 @@
+ 
+mutation mutationLifelogSaltConcentration($inspectedAt: Date!,$saltConcentration: Float!){
+  lifelogSaltConcentration(inspectedAt:$inspectedAt, saltConcentration: $saltConcentration){
+    id
+    saltConcentration
+    recordDevice
+    inspectedAt
+  }
+}

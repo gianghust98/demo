@@ -1,0 +1,10 @@
+ 
+mutation mutationSharingMedicalInstitutionAccept($medicalInstitutionUserId: Int!){
+  sharingMedicalInstitutionAccept(medicalInstitutionUserId: $medicalInstitutionUserId){
+    id
+    setting{
+      id
+      name
+    }
+  }
+}

@@ -1,0 +1,6 @@
+ 
+mutation mutationDeleteUser{
+  deleteUser{
+    id
+  }
+}

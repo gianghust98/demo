@@ -1,0 +1,10 @@
+{
+  "emeraldwalk.runonsave": {
+      "commands": [
+          {
+              "match": ".*/api/.*/*.js$",
+              "cmd": "cd ${workspaceRoot}; yarn gql"
+          },
+      ]
+  }
+}

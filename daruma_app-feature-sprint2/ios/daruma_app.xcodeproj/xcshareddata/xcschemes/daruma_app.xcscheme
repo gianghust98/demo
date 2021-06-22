@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1130"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "NO"
+      buildImplicitDependencies = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# exec &gt; ${PROJECT_DIR}/prebuild1.log 2&gt;&amp;1&#10;# echo &quot;hello world1&quot;&#10;&#10;if [ &quot;${CONFIGURATION}&quot; = &quot;Release&quot; -o &quot;${CONFIGURATION}&quot; = &quot;AdHocProduct&quot; ]; then&#10;echo &quot;.env.prod&quot; &gt; /tmp/envfile&#10;echo &quot;.env.prod&quot;&#10;elif [ &quot;${CONFIGURATION}&quot; = &quot;AdHocStaging&quot; -o &quot;${CONFIGURATION}&quot; = &quot;DebugStaging&quot; ]; then&#10;echo &quot;.env.stg&quot; &gt; /tmp/envfile&#10;echo &quot;.env.stg&quot;&#10;else&#10;echo &quot;.env&quot; &gt; /tmp/envfile&#10;echo &quot;.env&quot;&#10;fi&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+                     BuildableName = "&#x3059;&#x3053;&#x3084;&#x304b;&#x30bf;&#x3099;&#x30eb;&#x30de;.app"
+                     BlueprintName = "daruma_app"
+                     ReferencedContainer = "container:daruma_app.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+               BuildableName = "&#x3059;&#x3053;&#x3084;&#x304b;&#x30bf;&#x3099;&#x30eb;&#x30de;.app"
+               BlueprintName = "daruma_app"
+               ReferencedContainer = "container:daruma_app.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BuildableName = "daruma_appTests.xctest"
+               BlueprintName = "daruma_appTests"
+               ReferencedContainer = "container:daruma_app.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "&#x3059;&#x3053;&#x3084;&#x304b;&#x30bf;&#x3099;&#x30eb;&#x30de;.app"
+            BlueprintName = "daruma_app"
+            ReferencedContainer = "container:daruma_app.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "&#x3059;&#x3053;&#x3084;&#x304b;&#x30bf;&#x3099;&#x30eb;&#x30de;.app"
+            BlueprintName = "daruma_app"
+            ReferencedContainer = "container:daruma_app.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "AdHocStaging"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

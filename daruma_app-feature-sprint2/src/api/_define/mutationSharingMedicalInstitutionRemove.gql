@@ -1,0 +1,10 @@
+ 
+mutation mutationSharingMedicalInstitutionRemove($medicalInstitutionUserId: Int!){
+  sharingMedicalInstitutionRemove(medicalInstitutionUserId: $medicalInstitutionUserId){
+    id
+    setting{
+      id
+      name
+    }
+  }
+}

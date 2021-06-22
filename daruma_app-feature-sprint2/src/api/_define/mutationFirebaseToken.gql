@@ -1,0 +1,6 @@
+ 
+mutation mutationFirebaseToken($firebaseToken: String!){
+  firebaseToken(firebaseToken: $firebaseToken){
+    id
+  }
+}

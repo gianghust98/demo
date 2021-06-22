@@ -1,0 +1,6 @@
+ 
+mutation mutationSyncOmron($syncData: Date!){
+  syncOmron(syncData: $syncData){
+    id
+  }
+}

@@ -1,0 +1,51 @@
+import gql from 'graphql-tag'
+
+export default gql` 
+mutation mutationAddMedicalCertificate(
+  $bodyHeight: Float
+  $bodyWeight: Float
+  $bodyWaist: Float
+  $maximum: Int
+  $minimum: Int
+  $pulse: Int
+  $hdlCholesterol: Int
+  $ldlCholesterol: Int
+  $totalCholesterol: Int
+  $neutralFat: Int
+  $bloodSugarLevel: Int
+  $bloodSugarLevelMeasureState: BloodSugarLevelMeasureStateType
+  $hba1c: Int
+  $inspectedAt: Date ){
+  addMedicalCertificate(
+    bodyHeight: $bodyHeight
+    bodyWeight: $bodyWeight
+    bodyWaist: $bodyWaist
+    maximum: $maximum
+    minimum: $minimum
+    pulse: $pulse
+    hdlCholesterol: $hdlCholesterol
+    ldlCholesterol: $ldlCholesterol
+    totalCholesterol: $totalCholesterol
+    neutralFat: $neutralFat
+    bloodSugarLevel: $bloodSugarLevel
+    bloodSugarLevelMeasureState: $bloodSugarLevelMeasureState
+    hba1c: $hba1c
+    inspectedAt: $inspectedAt ){
+      id
+      bodyHeight
+      bodyWeight
+      bodyWaist
+      maximum
+      minimum
+      pulse
+      hdlCholesterol
+      ldlCholesterol
+      totalCholesterol
+      neutralFat
+      bloodSugarLevel
+      bloodSugarLevelMeasureState
+      hba1c
+      inspectedAt
+    }
+  }
+`

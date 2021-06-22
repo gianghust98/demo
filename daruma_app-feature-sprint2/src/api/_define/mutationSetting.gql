@@ -1,0 +1,15 @@
+ 
+mutation mutationSetting(
+  $showStepDownMedicineState: Boolean,
+  $showBodyWeight:Boolean,
+  $showSaltConcentration: Boolean) {
+  setting(
+    showStepDownMedicineState: $showStepDownMedicineState,
+    showBodyWeight:$showBodyWeight,
+    showSaltConcentration:$showSaltConcentration){
+      id
+      showStepDownMedicineState
+      showBodyWeight
+      showSaltConcentration
+  }
+}

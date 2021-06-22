@@ -1,0 +1,10 @@
+ 
+mutation mutationOmronToken($omronAuth: String!){
+  omronToken(omronAuth: $omronAuth){
+    id
+    omronLink{
+      linked
+      lastSync
+    }
+  }
+}

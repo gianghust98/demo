@@ -1,0 +1,10 @@
+ 
+mutation mutationOmronUnlink{
+   omronUnlink{
+    id
+    omronLink{
+      linked
+      lastSync
+    }
+  }
+}

@@ -1,0 +1,235 @@
+before_script:
+  - GIT_CMMIT_LOG=`git log $CI_COMMIT_SHA -1 --pretty=format:"%s"`
+  - GIT_CMMIT_BODY=`git log $CI_COMMIT_SHA -1 --pretty=format:"%b"`
+  - GIT_CMMIT_TAG=`git tag -l --contains $CI_COMMIT_SHA`
+  - BUILD_URL=`echo ${CI_REPOSITORY_URL%.git} | sed -e "s/https.*@/https:\\/\\//"`/builds/$CI_JOB_ID
+
+  - EML_URL="https://eml.orso.jp/api/upload"
+  # - CODEPUSH_APP_NAME_ANDRPID="ORSO/SUKOYAKADARUMA-Android"
+  # - CODEPUSH_APP_NAME_IOS="ORSO/SUKOYAKADARUMA-iOS"
+
+  - export LANG=en_US.UTF-8
+  - export LANGUAGE=ja_JP.UTF-8
+  - export LC_ALL=ja_JP.UTF-8
+
+  - yarn install
+  - yarn license
+
+  - bundle install --path .bundle
+
+stages:
+  # - load
+  - build
+
+# android ########################
+build-android-develop-check:
+  stage: build
+  script:
+    - ENV="【確認用】【開発環境】"
+    - FLOVER="DevNone"
+    - EML=true
+    - EML_TAG="check,develop"
+    - STORE=false
+    # - yarn android-bundle-output
+    - chmod +x ./android/gradlew
+    - bundle exec fastlane android apkSetter flavor:"$FLOVER" emlUp:$EML storeUp:$STORE emlUrl:"$EML_URL" emlToken:"$EML_API_KEY" emlTitle:"$ENV `date +"%Y-%m-%d %H:%M"`" emlDescription:"【subject】$GIT_CMMIT_LOG 【body】$GIT_CMMIT_BODY 【branch】$CI_COMMIT_SHA_NAME 【build】$BUILD_URL" emlTags:"$EML_TAG"
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - android/app/build/outputs/mapping/
+      - android/app/build/outputs/apk/
+    expire_in: 1 week
+  tags:
+    - fastlane
+  only:
+    - build
+  when: manual
+
+build-android-stage-check:
+  stage: build
+  script:
+    - ENV="【確認用】【ステージ環境】"
+    - FLOVER="StgNone"
+    - EML=true
+    - EML_TAG="check,staging"
+    - STORE=false
+    # - yarn android-bundle-output
+    - chmod +x ./android/gradlew
+    - bundle exec fastlane android apkSetter flavor:"$FLOVER" emlUp:$EML storeUp:$STORE emlUrl:"$EML_URL" emlToken:"$EML_API_KEY" emlTitle:"$ENV `date +"%Y-%m-%d %H:%M"`" emlDescription:"【subject】$GIT_CMMIT_LOG 【body】$GIT_CMMIT_BODY 【branch】$CI_COMMIT_SHA_NAME 【build】$BUILD_URL" emlTags:"$EML_TAG"
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - android/app/build/outputs/mapping/
+      - android/app/build/outputs/apk/
+    expire_in: 1 week
+  tags:
+    - fastlane
+  only:
+    - build
+  when: manual
+
+build-android-product-check:
+  stage: build
+  script:
+    - ENV="【確認用】【本番環境】"
+    - FLOVER="ProdNone"
+    - EML=true
+    - EML_TAG="check,product"
+    - STORE=false
+    # - yarn android-bundle-output
+    - chmod +x ./android/gradlew
+    - bundle exec fastlane android apkSetter flavor:"$FLOVER" emlUp:$EML storeUp:$STORE emlUrl:"$EML_URL" emlToken:"$EML_API_KEY" emlTitle:"$ENV `date +"%Y-%m-%d %H:%M"`" emlDescription:"【subject】$GIT_CMMIT_LOG 【body】$GIT_CMMIT_BODY 【branch】$CI_COMMIT_SHA_NAME 【build】$BUILD_URL" emlTags:"$EML_TAG"
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - android/app/build/outputs/mapping/
+      - android/app/build/outputs/apk/
+    expire_in: 1 week
+  tags:
+    - fastlane
+  only:
+    - build
+  when: manual
+
+build-android-release:
+  stage: build
+  script:
+    - ENV="【ストア用】"
+    - FLOVER="ProdOrso"
+    - EML=true
+    - EML_TAG="release"
+    - STORE=false
+    # - yarn android-bundle-output
+    - chmod +x ./android/gradlew
+    - bundle exec fastlane android apkSetter flavor:"$FLOVER" emlUp:$EML storeUp:$STORE emlUrl:"$EML_URL" emlToken:"$EML_API_KEY" emlTitle:"$ENV $GIT_CMMIT_TAG `date +"%Y-%m-%d %H:%M"`" emlDescription:"【subject】$GIT_CMMIT_LOG 【body】$GIT_CMMIT_BODY 【branch】$CI_COMMIT_SHA_NAME 【build】$BUILD_URL" emlTags:"$EML_TAG"
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - android/app/build/outputs/mapping/
+      - android/app/build/outputs/apk/
+    expire_in: 2 year
+  tags:
+    - fastlane
+  only:
+    - master
+  when: manual
+
+# code-push-stage-code-push:
+#   # appcenter のインストールが必要  $ npm install -g appcenter-cli
+#   stage: build
+#   script:
+#     - export $(cat .env.stg | grep -v ^# | xargs);
+#     - CODEPUSH_ENV="Staging"
+#     - appcenter login --token $APPCENTER_TOKEN
+#     - bundle exec fastlane android codepush app_name:"$CODEPUSH_APP_NAME_ANDRPID" environment:"$CODEPUSH_ENV" version:"$VER_NAME"
+#     - bundle exec fastlane ios codepush app_name:"$CODEPUSH_APP_NAME_IOS" environment:"$CODEPUSH_ENV" version:"$VER_NAME"
+#   tags:
+#     - fastlane
+#   only:
+#     - build
+  # when: manual
+
+# code-push-product-code-push:
+#   stage: build
+#   script:
+#     - export $(cat .env.prod | grep -v ^# | xargs);
+#     - CODEPUSH_ENV="Production"
+#     - appcenter login --token $APPCENTER_TOKEN
+#     - bundle exec fastlane codepush app_name:"$CODEPUSH_APP_NAME_ANDRPID" environment:"$CODEPUSH_ENV" version:"$VER_NAME"
+#     - bundle exec fastlane codepush app_name:"$CODEPUSH_APP_NAME_IOS" environment:"$CODEPUSH_ENV" version:"$VER_NAME"
+#   tags:
+#     - fastlane
+#   only:
+#     - master
+#   when: manual
+
+
+# ios ########################
+build-ios-develop-orso-check:
+  stage: build
+  script:
+    - ENV="【確認用】【開発環境】"
+    - SCHEME="AdHocDevelop"
+    - ADHOC=true
+    - EML=true
+    - EML_TAG="check,develop"
+    - STORE=false
+    - bundle exec fastlane ios ipaSetter scheme:"$SCHEME" adHoc:$ADHOC emlUp:$EML storeUp:$STORE emlUrl:"$EML_URL" emlToken:"$EML_API_KEY" emlTitle:"$ENV `date +"%Y-%m-%d %H:%M"`" emlDescription:"【subject】$GIT_CMMIT_LOG 【body】$GIT_CMMIT_BODY 【branch】$CI_COMMIT_SHA_NAME 【build】$BUILD_URL" emlTags:"$EML_TAG" app_identifier:"com.sukoyakadaruma.liferecord.develop"
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - build/
+    expire_in: 1 week
+  tags:
+    - fastlane_ios
+    # - fastlane
+  only:
+    - build
+  when: manual
+
+build-ios-stage-orso-check:
+  stage: build
+  script:
+    - ENV="【確認用】【ステージ環境】"
+    - SCHEME="AdHocStaging"
+    - ADHOC=true
+    - EML=true
+    - EML_TAG="check,staging"
+    - STORE=false
+    - bundle exec fastlane ios ipaSetter scheme:"$SCHEME" adHoc:$ADHOC emlUp:$EML storeUp:$STORE emlUrl:"$EML_URL" emlToken:"$EML_API_KEY" emlTitle:"$ENV `date +"%Y-%m-%d %H:%M"`" emlDescription:"【subject】$GIT_CMMIT_LOG 【body】$GIT_CMMIT_BODY 【branch】$CI_COMMIT_SHA_NAME 【build】$BUILD_URL" emlTags:"$EML_TAG" app_identifier:"com.sukoyakadaruma.liferecord.staging"
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - build/
+    expire_in: 1 week
+  tags:
+    - fastlane_ios
+    # - fastlane
+  only:
+    - build
+  when: manual
+
+build-ios-prod-orso-check:
+  stage: build
+  script:
+    - ENV="【確認用】【本番環境】【ORSO】"
+    - SCHEME="AdHocProduct"
+    - ADHOC=true
+    - EML=true
+    - EML_TAG="check,product"
+    - STORE=false
+    - bundle exec fastlane ios ipaSetter scheme:"$SCHEME" adHoc:$ADHOC emlUp:$EML storeUp:$STORE emlUrl:"$EML_URL" emlToken:"$EML_API_KEY" emlTitle:"$ENV `date +"%Y-%m-%d %H:%M"`" emlDescription:"【subject】$GIT_CMMIT_LOG 【body】$GIT_CMMIT_BODY 【branch】$CI_COMMIT_SHA_NAME 【build】$BUILD_URL" emlTags:"$EML_TAG" app_identifier:"com.sukoyakadaruma.liferecord"
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - build/
+    expire_in: 1 week
+  tags:
+    - fastlane_ios
+    # - fastlane
+  only:
+    - build
+  when: manual
+
+build-ios-release:
+  stage: build
+  script:
+    - ENV="【ストア用】"
+    - SCHEME="Release"
+    - ADHOC=false
+    - EML=true
+    - EML_TAG="release"
+    - STORE=false
+    - bundle exec fastlane ios ipaSetter scheme:"$SCHEME" adHoc:$ADHOC emlUp:$EML storeUp:$STORE emlUrl:"$EML_URL" emlToken:"$EML_API_KEY" emlTitle:"$ENV $GIT_CMMIT_TAG `date +"%Y-%m-%d %H:%M"`" emlDescription:"【subject】$GIT_CMMIT_LOG 【body】$GIT_CMMIT_BODY 【branch】$CI_COMMIT_SHA_NAME 【build】$BUILD_URL" emlTags:"$EML_TAG" app_identifier:"com.sukoyakadaruma.liferecord"
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - build/
+    expire_in: 2 year
+  tags:
+    - fastlane_ios
+    # - fastlane
+  only:
+    - master
+  when: manual
+

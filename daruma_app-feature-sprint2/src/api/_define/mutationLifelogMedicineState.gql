@@ -1,0 +1,9 @@
+ 
+mutation mutationLifelogMedicineState($inspectedAt: Date!,$drinkStepDownMedicineState: Boolean!){
+  lifelogMedicineState(inspectedAt:$inspectedAt, drinkStepDownMedicineState: $drinkStepDownMedicineState){
+    id
+    drinkStepDownMedicineState
+    recordDevice
+    inspectedAt
+  }
+}

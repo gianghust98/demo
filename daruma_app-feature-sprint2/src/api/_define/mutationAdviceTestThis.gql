@@ -1,0 +1,6 @@
+ 
+mutation mutationAdviceTestThis{
+  adviceTestThis{
+    id
+  }
+}

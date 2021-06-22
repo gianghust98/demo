@@ -1,0 +1,286 @@
+type BaseLine {
+  maximum: Int
+  minimum: Int
+}
+
+enum BloodSugarLevelMeasureStateType {
+  hunger
+  other
+}
+
+input CursorInput {
+  col: String!
+  value: String
+}
+
+type CursorReturn {
+  col: String!
+  value: String
+}
+
+# Date custom scalar type
+scalar Date
+
+enum GenderType {
+  man
+  woman
+}
+
+type HealthStatus {
+  id: Int
+  smokingStatus: SmokingStatusType
+  diabetesStatus: Boolean
+  cerebrovascularDiseasStatus: Boolean
+  heartLesionStatus: Boolean
+  kidneySiseaseStatus: Boolean
+  vascularLesionStatus: Boolean
+  diseaseDeathRelativesStatus: Boolean
+}
+
+type Information {
+  id: Int
+  informationMessage: InformationMessage
+  message: String
+  readAt: Date
+  createdAt: Date
+}
+
+type InformationMessage {
+  id: Int
+  iconUrl: String
+  title: String
+  message: String
+  linkText: String
+  linkUrl: String
+}
+
+# The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+scalar JSON
+
+type LifelogBloodPressure {
+  id: Int
+  maximum: Int
+  minimum: Int
+  pulse: Int
+  periodOfTime: PeriodOfTime
+  recordDevice: RecordDevice
+  inspectedAt: Date
+}
+
+type LifelogBodyWeight {
+  id: Int
+  bodyWeight: Float
+  recordDevice: RecordDevice
+  inspectedAt: Date
+}
+
+type LifelogMedicineState {
+  id: Int
+  drinkStepDownMedicineState: Boolean
+  recordDevice: RecordDevice
+  inspectedAt: Date
+}
+
+type LifelogSaltConcentration {
+  id: Int
+  saltConcentration: Float
+  recordDevice: RecordDevice
+  inspectedAt: Date
+}
+
+type LifelogSleep {
+  id: Int
+  sleepTime: Int
+  recordDevice: RecordDevice
+  inspectedAt: Date
+}
+
+type LifelogStepCount {
+  id: Int
+  stepCount: Int
+  caloriesOut: Int
+  recordDevice: RecordDevice
+  inspectedAt: Date
+}
+
+type MedalCount {
+  gold: Int
+  silver: Int
+  bronze: Int
+}
+
+enum MedalType {
+  gold
+  silver
+  bronze
+}
+
+type MedicalCertificate {
+  id: Int
+  bodyHeight: Float
+  bodyWeight: Float
+  bodyWaist: Float
+  maximum: Int
+  minimum: Int
+  pulse: Int
+  hdlCholesterol: Int
+  ldlCholesterol: Int
+  totalCholesterol: Int
+  neutralFat: Int
+  bloodSugarLevel: Int
+  bloodSugarLevelMeasureState: BloodSugarLevelMeasureStateType
+  hba1c: Int
+  inspectedAt: Date
+}
+
+type MedicalInstitution {
+  id: Int
+  setting: MedicalInstitutionSetting
+}
+
+type MedicalInstitutionSetting {
+  id: Int
+  name: String
+}
+
+type Mutation {
+  adviceTestPrev: RecordUser
+  adviceTestThis: RecordUser
+  firebaseToken(firebaseToken: String!): RecordUser
+  fitbitToken(fitbitAuth: String!): RecordUser
+  fitbitUnlink: RecordUser
+  syncFitbit(syncData: Date!): RecordUser
+  healthStatus(smokingStatus: SmokingStatusType, diabetesStatus: Boolean, cerebrovascularDiseasStatus: Boolean, heartLesionStatus: Boolean, kidneySiseaseStatus: Boolean, vascularLesionStatus: Boolean, diseaseDeathRelativesStatus: Boolean): HealthStatus
+  readInformation(informationId: Int!): Information
+  addLifelogBloodPressure(inspectedAt: Date!, maximum: Int, minimum: Int, pulse: Int): LifelogBloodPressure
+  editLifelogBloodPressure(id: Int!, inspectedAt: Date, maximum: Int, minimum: Int, pulse: Int): LifelogBloodPressure
+  deleteLifelogBloodPressure(id: Int!): LifelogBloodPressure
+  lifelogMedicineState(inspectedAt: Date!, drinkStepDownMedicineState: Boolean!): LifelogMedicineState
+  lifelogSaltConcentration(inspectedAt: Date!, saltConcentration: Float!): LifelogSaltConcentration
+  addMedicalCertificate(bodyHeight: Float, bodyWeight: Float, bodyWaist: Float, maximum: Int, minimum: Int, pulse: Int, hdlCholesterol: Int, ldlCholesterol: Int, totalCholesterol: Int, neutralFat: Int, bloodSugarLevel: Int, bloodSugarLevelMeasureState: BloodSugarLevelMeasureStateType, hba1c: Int, inspectedAt: Date): MedicalCertificate
+  editMedicalCertificate(id: Int!, bodyHeight: Float, bodyWeight: Float, bodyWaist: Float, maximum: Int, minimum: Int, pulse: Int, hdlCholesterol: Int, ldlCholesterol: Int, totalCholesterol: Int, neutralFat: Int, bloodSugarLevel: Int, bloodSugarLevelMeasureState: BloodSugarLevelMeasureStateType, hba1c: Int, inspectedAt: Date): MedicalCertificate
+  deleteMedicalCertificate(id: Int!): MedicalCertificate
+  omronToken(omronAuth: String!): RecordUser
+  omronUnlink: RecordUser
+  syncOmron(syncData: Date!): RecordUser
+  profile(postalCode: String, gender: GenderType, birthYear: Int, showStepDownMedicineState: Boolean, showBodyWeight: Boolean, showSaltConcentration: Boolean, smokingStatus: SmokingStatusType, diabetesStatus: Boolean, cerebrovascularDiseasStatus: Boolean, heartLesionStatus: Boolean, kidneySiseaseStatus: Boolean, vascularLesionStatus: Boolean, diseaseDeathRelativesStatus: Boolean): RecordUser
+  sharingMedicalInstitutionAccept(medicalInstitutionUserId: Int!): MedicalInstitution
+  sharingMedicalInstitutionCancel(medicalInstitutionUserId: Int!): MedicalInstitution
+  sharingMedicalInstitutionRemove(medicalInstitutionUserId: Int!): MedicalInstitution
+  setting(postalCode: String, gender: GenderType, birthYear: Int, showStepDownMedicineState: Boolean, showBodyWeight: Boolean, showSaltConcentration: Boolean): RecordUserSetting
+  lineRegister(lineAuth: String!): Token
+  lineLogin(lineAuth: String!): Token
+  deleteUser: RecordUser
+}
+
+interface PagingCursor {
+  cursors: [CursorReturn]
+  hasNext: Boolean
+}
+
+type PagingInformation implements PagingCursor {
+  cursors: [CursorReturn]
+  hasNext: Boolean
+  list: [Information]
+}
+
+interface PagingOffset {
+  maxId: Int
+  next: Int
+  previous: Int
+  pageCount: Int
+}
+
+enum PeriodOfTime {
+  morning
+  night
+  other
+}
+
+type Query {
+  unreadInformationCount: Int
+  informations(cursors: [CursorInput]): PagingInformation
+  lifelogBloodPressures(year: Int!, month: Int!, day: Int): [LifelogBloodPressure]
+  lifelogStepCount(year: Int!, month: Int!, day: Int!): LifelogStepCount
+  lifelogSleep(year: Int!, month: Int!, day: Int!): LifelogSleep
+  lifelogMedicineState(year: Int!, month: Int!, day: Int!): LifelogMedicineState
+  lifelogBodyWeight(year: Int!, month: Int!, day: Int!): LifelogBodyWeight
+  lifelogSaltConcentration(year: Int!, month: Int!, day: Int!): LifelogSaltConcentration
+  lifelogStepCounts(year: Int!, month: Int!): [LifelogStepCount]
+  lifelogSleeps(year: Int!, month: Int!): [LifelogSleep]
+  lifelogMedicineStates(year: Int!, month: Int!): [LifelogMedicineState]
+  lifelogBodyWeights(year: Int!, month: Int!): [LifelogBodyWeight]
+  lifelogSaltConcentrations(year: Int!, month: Int!): [LifelogSaltConcentration]
+  medicalCertificates(year: Int, month: Int, day: Int): [MedicalCertificate]
+  sharingMedicalInstitutions: [MedicalInstitution]
+  pendingSharingMedicalInstitutions: [MedicalInstitution]
+  currentUser: RecordUser
+  stampInfo: StampInfo
+  now: Date!
+}
+
+enum RecordDevice {
+  application
+  clova
+  omron
+  fitbit
+}
+
+type RecordUser {
+  id: Int
+  setting: RecordUserSetting
+  medalCount: MedalCount
+  medicalCertificates: [MedicalCertificate]
+  healthStatus: HealthStatus
+  fitbitLink: SyncLink
+  omronLink: SyncLink
+  baseLine: BaseLine
+}
+
+type RecordUserSetting {
+  id: Int
+  sharelingCode: String
+  postalCode: String
+  gender: GenderType
+  birthYear: Int
+  showStepDownMedicineState: Boolean
+  showBodyWeight: Boolean
+  showSaltConcentration: Boolean
+}
+
+enum SmokingStatusType {
+  yes
+  no
+  past
+}
+
+type StampDay {
+  stampDate: Date
+  morning: Boolean
+  night: Boolean
+}
+
+type StampInfo {
+  weeklyStamps: [StampDay]
+  nowMedal: MedalType
+  nextMedal: MedalType
+  nextMedalRemainStamp: Float
+}
+
+type SyncLink {
+  linked: Boolean
+  lastSync: Date
+}
+
+type Token {
+  accessToken: String!
+  user: RecordUser!
+  now: Date!
+}
+
+scalar Upload
+
+type VerifyEmail {
+  email: String
+}
+

@@ -1,0 +1,160 @@
+fastlane_version "2.23.0"
+default_platform :ios
+
+before_all do
+  ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  ENV["SLACK_CHANNEL"] = "#daruma_proto"
+  ENV["EML_PROJECT"] = "https://eml.orso.jp/app?id=27"
+end
+
+platform :ios do
+  ## app書き出しと配布の設定 ############################################################################
+  desc "ipaSetter"
+  lane :ipaSetter do |options|
+    # emlUp: true,false
+    # storeUp: true,false
+    # scheme scheme in gym 
+    # adHoc: true,false
+    # app_identifier
+
+    # init
+    scheme = options[:scheme] ? options[:scheme] : "Debug"
+
+    # build
+    cocoapods(repo_update: true, podfile:"ios/Podfile")
+    # cert
+    sigh(
+      adhoc: options[:adHoc],
+      app_identifier: options[:app_identifier],
+      # force: true,
+    )
+    build_app(
+      workspace: "ios/daruma_app.xcworkspace",
+      clean: true,
+      scheme:'daruma_app',
+      configuration: scheme,
+      output_directory: "build",
+      include_symbols: true,
+      include_bitcode: true,
+    )
+
+    #  eml
+    if options[:emlUp]
+      eml_ress = JSON.parse(upEmlauncher(
+        emlUrl:options[:emlUrl],
+        emlToken:options[:emlToken],
+        emlTitle:options[:emlTitle],
+        emlDescription:options[:emlDescription],
+        tags:options[:emlTags],
+        file:lane_context[SharedValues::IPA_OUTPUT_PATH]))
+      eml_slack(success: true, platform:"iOS", message: ":おけ: iOS #{options[:emlTitle]} Successfully Daruma Build \n #{eml_ress['package_url']}")
+    end
+  end
+
+#   #  codepush
+#   lane :codepush do |options|
+#     do_codepush(options)
+#   end
+end
+
+platform :android do
+  ## app書き出しと配布の設定 ############################################################################
+  desc "apkSetter"
+  lane :apkSetter do |options|
+    # emlUp: true,false
+    # storeUp: true,false
+    # flavor flavor in gradle
+
+    # init
+    flavor = options[:flavor] ? options[:flavor] : "StgNone"
+
+    # build
+    # sh("yarn run android-bundle-output")
+    gradle(task: "assemble", flavor: flavor, build_type: "Release", project_dir: 'android/')
+
+    #  eml
+    if options[:emlUp]
+      eml_ress = JSON.parse(upEmlauncher(
+        emlUrl:options[:emlUrl],
+        emlToken:options[:emlToken],
+        emlTitle:options[:emlTitle],
+        emlDescription:options[:emlDescription],
+        tags:options[:emlTags],
+        file:lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]))
+
+      eml_slack(success: true, platform:"Android", message: ":おけ: Android #{options[:emlTitle]} Successfully Daruma Build \n #{eml_ress['package_url']}")
+    end
+  end
+
+#  codepush
+#   lane :codepush do |options|
+#     do_codepush(options)
+#   end
+end
+
+## CodePush ############################################################################
+# desc "code push"
+# private_lane :do_codepush do |options|
+#   Dir.chdir("..") do
+#     sh "appcenter codepush release-react -a #{options[:app_name]} -d #{options[:environment]} -t #{options[:version]}" do |status, result, command|
+#       success = true
+#       ress = ":おけ:"
+#       unless status.success?
+#         success = false
+#         ress = ":zany_face:"
+#      end
+#       notify_slack(success: success, platform: "code push", message: "#{ress} command:#{command}")
+#     end
+#   end
+# end
+
+## EMLauncherの設定 ############################################################################
+desc "upEmlauncher"
+private_lane :upEmlauncher do |options|
+  # init
+  # emlUrl
+  # emlToken
+  url = options[:emlUrl] ? options[:emlUrl] : ""
+  token = options[:emlToken] ? options[:emlToken] : ""
+  filePath = options[:file]
+  title = options[:emlTitle]
+  desc = options[:emlDescription]
+  tags = options[:emlTags]
+
+  sh("curl -sS #{url} \
+  -F api_key='#{token}' \
+  -F file=@'#{filePath}' \
+  -F title='#{title}' \
+  -F description='#{desc}' \
+  -F tags='#{tags}'", log: false)
+end
+
+## slackの設定 ############################################################################
+private_lane :eml_slack do |options|
+  #slack(
+  #  success: options[:success] ? true : false,
+  #  channel: ENV['SLACK_CHANNEL'],
+  #  message: options[:message],
+  #  payload: { "Platform" => options[:platform], "EML Project" => "#{ENV['EML_PROJECT']}", "Build Date" => Time.new.to_s },
+  #  default_payloads: [:lane, :test_result, :git_branch, :git_author],
+  #)
+end
+private_lane :notify_slack do |options|
+  #slack(
+  #  success: options[:success] ? true : false,
+  #  channel: ENV['SLACK_CHANNEL'],
+  #  message: options[:message],
+  #  default_payloads: [:lane, :test_result, :git_branch, :git_author],
+  #)
+end
+
+
+# laneの処理が終了したときに呼ばれる
+after_all do |lane, options|
+  
+end
+
+# エラーのときに呼ばれる
+error do |lane, exception, options|
+  notify_slack(success: false, message: ":zany_face: #{options[:emlTitle]} #{exception.message}")
+end

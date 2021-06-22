@@ -1,0 +1,14 @@
+ 
+query queryWearableDevice{
+  currentUser{
+    id
+    fitbitLink{
+      linked
+      lastSync
+    }
+    omronLink{
+      linked
+      lastSync
+    }
+  }
+}

@@ -1,0 +1,17 @@
+import gql from 'graphql-tag'
+
+export default gql` 
+mutation mutationLifelog($inspectedAt: Date!,$stepCount: Int,$sleepTime: Int,$drinkStepDownMedicineState: Boolean,$bodyWeight: Float,$saltConcentration: Float){
+  lifelog(inspectedAt:$inspectedAt,stepCount:$stepCount, sleepTime: $sleepTime, drinkStepDownMedicineState: $drinkStepDownMedicineState, bodyWeight:$bodyWeight, saltConcentration: $saltConcentration){
+    id
+    stepCount
+    caloriesOut
+    stepCounAchievement
+    sleepTime
+    bodyWeight
+    drinkStepDownMedicineState
+    saltConcentration
+    inspectedAt
+  }
+}
+`

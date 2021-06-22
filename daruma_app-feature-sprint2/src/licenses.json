@@ -1,0 +1,160 @@
+{
+    "apollo-boost@0.1.16": {
+        "licenses": "MIT",
+        "repository": "https://github.com/apollographql/apollo-client",
+        "licenseFile": "node_modules/apollo-boost/LICENSE",
+        "licenseUrl": "https://github.com/apollographql/apollo-client/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "apollo-link-batch-http@1.2.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/apollographql/apollo-link",
+        "licenseUrl": "https://github.com/apollographql/apollo-link",
+        "parents": "daruma_app"
+    },
+    "apollo-link-context@1.0.9": {
+        "licenses": "MIT",
+        "repository": "https://github.com/apollographql/apollo-link",
+        "licenseUrl": "https://github.com/apollographql/apollo-link",
+        "parents": "daruma_app"
+    },
+    "decimal.js@10.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/MikeMcl/decimal.js",
+        "licenseFile": "node_modules/decimal.js/LICENCE.md",
+        "licenseUrl": "https://github.com/MikeMcl/decimal.js/raw/master/LICENCE.md",
+        "parents": "daruma_app"
+    },
+    "graphql@14.0.2": {
+        "licenses": "MIT",
+        "repository": "http://github.com/graphql/graphql-js",
+        "licenseFile": "node_modules/graphql/LICENSE",
+        "licenseUrl": "http://github.com/graphql/graphql-js/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "moment-timezone@0.5.21": {
+        "licenses": "MIT",
+        "repository": "https://github.com/moment/moment-timezone",
+        "licenseFile": "node_modules/moment-timezone/LICENSE",
+        "licenseUrl": "https://github.com/moment/moment-timezone/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "moment@2.22.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/moment/moment",
+        "licenseFile": "node_modules/moment/LICENSE",
+        "licenseUrl": "https://github.com/moment/moment/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "npm-license-crawler@0.1.9": {
+        "licenses": "BSD-3-Clause",
+        "repository": "http://github.com/mwittig/npm-license-crawler",
+        "licenseFile": "node_modules/npm-license-crawler/LICENSE",
+        "licenseUrl": "http://github.com/mwittig/npm-license-crawler/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "prop-types@15.6.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/prop-types",
+        "licenseFile": "node_modules/prop-types/LICENSE",
+        "licenseUrl": "https://github.com/facebook/prop-types/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-apollo@2.1.11": {
+        "licenses": "MIT",
+        "repository": "https://github.com/apollographql/react-apollo",
+        "licenseFile": "node_modules/react-apollo/LICENSE",
+        "licenseUrl": "https://github.com/apollographql/react-apollo/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-app-auth@3.1.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/FormidableLabs/react-native-app-auth",
+        "licenseFile": "node_modules/react-native-app-auth/LICENSE",
+        "licenseUrl": "https://github.com/FormidableLabs/react-native-app-auth/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-config@0.11.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/luggit/react-native-config",
+        "licenseFile": "node_modules/react-native-config/LICENSE",
+        "licenseUrl": "https://github.com/luggit/react-native-config/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-datepicker@1.7.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/xgfe/react-native-datepicker",
+        "licenseFile": "node_modules/react-native-datepicker/LICENSE",
+        "licenseUrl": "https://github.com/xgfe/react-native-datepicker/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-device-info@0.22.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/rebeccahughes/react-native-device-info",
+        "licenseFile": "node_modules/react-native-device-info/LICENSE",
+        "licenseUrl": "https://github.com/rebeccahughes/react-native-device-info/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-elements@0.19.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/dabit3/React-Native-Elements",
+        "licenseFile": "node_modules/react-native-elements/LICENSE",
+        "licenseUrl": "https://github.com/dabit3/React-Native-Elements/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-keyboard-aware-scroll-view@0.7.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/APSL/react-native-keyboard-aware-scroll-view",
+        "licenseFile": "node_modules/react-native-keyboard-aware-scroll-view/LICENSE",
+        "licenseUrl": "https://github.com/APSL/react-native-keyboard-aware-scroll-view/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-modal@6.5.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-native-community/react-native-modal",
+        "licenseFile": "node_modules/react-native-modal/LICENSE.md",
+        "licenseUrl": "https://github.com/react-native-community/react-native-modal/raw/master/LICENSE.md",
+        "parents": "daruma_app"
+    },
+    "react-native-navigation@2.0.2636": {
+        "licenses": "MIT",
+        "repository": "https://github.com/wix/react-native-navigation",
+        "licenseFile": "node_modules/react-native-navigation/LICENSE",
+        "licenseUrl": "https://github.com/wix/react-native-navigation/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-svg@7.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/magicismight/react-native-svg",
+        "licenseFile": "node_modules/react-native-svg/LICENSE",
+        "licenseUrl": "https://github.com/magicismight/react-native-svg/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native-table-component@1.1.8": {
+        "licenses": "ISC",
+        "repository": "https://github.com/Gil2015/react-native-table-component",
+        "licenseUrl": "https://github.com/Gil2015/react-native-table-component",
+        "parents": "daruma_app"
+    },
+    "react-native-vector-icons@5.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/oblador/react-native-vector-icons",
+        "licenseFile": "node_modules/react-native-vector-icons/LICENSE",
+        "licenseUrl": "https://github.com/oblador/react-native-vector-icons/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react-native@0.57.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react-native",
+        "licenseFile": "node_modules/react-native/LICENSE",
+        "licenseUrl": "https://github.com/facebook/react-native/raw/master/LICENSE",
+        "parents": "daruma_app"
+    },
+    "react@16.4.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react",
+        "licenseFile": "node_modules/react/LICENSE",
+        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+        "parents": "daruma_app"
+    }
+}

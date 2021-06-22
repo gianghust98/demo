@@ -1,0 +1,10 @@
+ 
+query queryPendingSharingMedicalInstitutions{
+  pendingSharingMedicalInstitutions{
+    id
+    setting{
+      id
+      name
+    }
+  }
+}

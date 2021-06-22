@@ -1,0 +1,40 @@
+$RNFirebaseAsStaticFramework = true
+platform :ios, '10.0'
+
+use_frameworks!
+
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+
+target 'daruma_app' do
+  config = use_native_modules!
+
+  pod 'AppAuth', :path => '../subtree/AppAuth-iOS'
+  use_react_native!(:path => config["reactNativePath"])
+
+
+
+  target 'daruma_appTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  # use_flipper!
+  # post_install do |installer|
+  #   flipper_post_install(installer)
+  # end
+end
+
+target 'daruma_app-tvOS' do
+  # Pods for daruma_app-tvOS
+
+  target 'daruma_app-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end

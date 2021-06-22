@@ -1,0 +1,24 @@
+{
+  "name": "react-native-line-sdk",
+  "version": "1.1.0",
+  "description": "react native line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xmartlabs/react-native-line.git"
+  },
+  "keywords": [
+    "LINE",
+    "login",
+    "react-native"
+  ],
+  "author": "Xmartlabs SRL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xmartlabs/react-native-line/issues"
+  },
+  "homepage": "https://github.com/xmartlabs/react-native-line#readme"
+}

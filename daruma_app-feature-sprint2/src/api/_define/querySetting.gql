@@ -1,0 +1,12 @@
+ 
+query queryProfile{
+  currentUser{
+    id
+    setting{
+      id
+      showStepDownMedicineState
+      showBodyWeight
+      showSaltConcentration
+    }
+  }
+}
